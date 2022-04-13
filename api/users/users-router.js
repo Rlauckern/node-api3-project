@@ -46,5 +46,13 @@ router.post('/:id/posts', validateUserId, validatePost, (req, res) => {
   // and another middleware to check that the request body is valid
 });
 
+router.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    customMessage: 'something tragic inside posts router happened',
+    message: err.message,
+    stack: err.stack,
+  })
+})
+
 // do not forget to export the router
 module.exports = router
