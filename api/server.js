@@ -1,6 +1,9 @@
 const express = require('express');
+const {} = require('./middleware');
 
 const server = express();
+
+server.use(express.json());
 
 // remember express by default cannot parse JSON in request bodies
 
